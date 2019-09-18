@@ -1,4 +1,4 @@
-FROM finboxio/rancher-conf-aws:v0.0.4-dev
+FROM finboxio/rancher-conf-aws:v0.1.0
 
 ADD mongo-init /opt/rancher/bin/
 ADD mongo-init-cleanup /opt/rancher/bin/
