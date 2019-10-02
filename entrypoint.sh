@@ -7,7 +7,7 @@ set -e
 export PATH="$PATH:/opt/rancher/bin"
 
 MONGO_PORT=${MONGO_PORT:-27017}
-MONGO_DIR=${MONGO_DIR:-/mongo}
+MONGO_DIR=${MONGO_DIR:-/data/db}
 MONGO_STORAGE_ENGINE=${MONGO_STORAGE_ENGINE:-wiredTiger}
 MONGO_OPTS=${MONGO_OPTS}
 
