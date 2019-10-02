@@ -1,4 +1,10 @@
 
+0.2.0 / 2019-10-02
+==================
+
+  * Add ebs backup scripts
+  * Change default data dir to /data/db
+
 0.1.2 / 2019-09-18
 ==================
 
