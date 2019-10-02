@@ -65,10 +65,6 @@ if [[ ! -e ${MONGO_DIR}/data ]]; then
 fi
 
 if [[ "$MONGO_REPLSET" != "" ]]; then
-  ARBITER_OPTS=
-  if [[ "$MONGO_ROLE" == "arbiter" ]]; then
-    ARBITER_OPTS="--smallfiles"
-  fi
   exec gosu mongodb mongod \
     --bind_ip_all \
     --storageEngine ${MONGO_STORAGE_ENGINE} \
@@ -77,7 +73,6 @@ if [[ "$MONGO_REPLSET" != "" ]]; then
     --replSet ${MONGO_REPLSET} \
     ${AUTH} \
     ${QUIET} \
-    ${ARBITER_OPTS} \
     ${MONGO_OPTS}
 else
   exec gosu mongodb mongod \
