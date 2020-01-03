@@ -1,0 +1,11 @@
+#! /bin/bash
+
+# Creates an EBS snapshot of mongo database. Locks mongo and
+# freezes the filesystem before snapshotting
+
+MONGO_URL=${MONGO_URL:?"MONGO_URL must be set"}
+MONGO_DIR=${MONGO_DIR:?"MONGO_DIR must be set"}
+
+## Lock database
+mongo $MONGO_URL --eval 'db.fsyncLock()'
+fsfreeze -f ${MONGO_DIR}

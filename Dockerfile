@@ -1,18 +1,22 @@
-FROM finboxio/rancher-conf-aws:v0.3.0
+FROM finboxio/rancher-conf-aws:v0.4.2
 
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/main' >> /etc/apk/repositories
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories
-RUN apk update
-RUN apk add mongodb
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.7/main' > /etc/apk/repositories
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.7/community' >> /etc/apk/repositories
+RUN apk add --no-cache yaml-cpp
 
-RUN apk add --no-cache util-linux mongodb bash curl && \
-    curl -L -o /usr/sbin/slack https://gist.githubusercontent.com/bdentino/6f6f91960e239e158f84d6bfe08cfd1d/raw/d1a387c6c568cff1f5169e158a3dfc15bdd1a9b7/slack-bash && \
-    chmod +x /usr/sbin/slack
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.9/main' > /etc/apk/repositories
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.9/community' >> /etc/apk/repositories
+RUN apk add --no-cache mongodb
 
 ADD mongo-init /opt/rancher/bin/
 ADD mongo-init-cleanup /opt/rancher/bin/
 ADD mongo-preload /opt/rancher/bin/
-ADD mongo-backup /opt/rancher/bin/
 ADD mongo-backup-verify /opt/rancher/bin/
+
+ADD pre-snapshot /pre-snapshot
+ADD post-snapshot /post-snapshot
+
+ENV PRE_SNAPSHOT_SCRIPT /pre-snapshot
+ENV POST_SNAPSHOT_SCRIPT /post-snapshot
 
 ADD entrypoint.sh /opt/rancher/bin/entrypoint.sh

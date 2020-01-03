@@ -1,0 +1,8 @@
+#! /bin/bash
+
+MONGO_URL=${MONGO_URL:?"MONGO_URL must be set"}
+MONGO_DIR=${MONGO_DIR:?"MONGO_DIR must be set"}
+
+## Unlock database
+fsfreeze -u ${MONGO_DIR}
+mongo $MONGO_URL --eval "db.fsyncUnlock()"
