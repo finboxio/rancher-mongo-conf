@@ -1,7 +1,5 @@
 FROM finboxio/rancher-conf-aws:v1.1.1
 
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.7/main' > /etc/apk/repositories
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.7/community' >> /etc/apk/repositories
 RUN apk add --no-cache yaml-cpp
 
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.9/main' > /etc/apk/repositories
