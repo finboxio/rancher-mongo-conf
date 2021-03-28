@@ -1,4 +1,4 @@
-FROM finboxio/rancher-conf-aws:v0.4.2
+FROM finboxio/rancher-conf-aws:v1.1.1
 
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.7/main' > /etc/apk/repositories
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.7/community' >> /etc/apk/repositories
