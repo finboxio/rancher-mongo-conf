@@ -36,7 +36,7 @@ if [[ "${MONGO_ROLE}" == "primary" ]]; then
 			if (members != cfg.members.length) {
 				rs.reconfig(cfg, { force: true });
 			}
-		INIT
+INIT
 	fi
 
 	echo "cleaning up mongodb replicaset initialization member..."
