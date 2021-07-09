@@ -1,4 +1,4 @@
-FROM finboxio/rancher-conf-aws:v1.1.3
+FROM finboxio/rancher-conf-aws:v1.3.1
 
 RUN apk add --no-cache \
   -X http://dl-cdn.alpinelinux.org/alpine/v3.9/community \
